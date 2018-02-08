@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Application - Parch</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Parch
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>2.1.2</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Application", "classes/containment", "classes/Controller", "classes/JSONSerializer", "classes/Loader", "classes/Model", "classes/ModelManager", "classes/Registry", "classes/RestSerializer", "classes/Route", "classes/Router", "classes/RouteSegment", "classes/Store", "modules/parch"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+<div>
+    <div id="sidebar">
+    <div id="classes">
+        <ul id="api-classes" class="nav nav-list">
+                <li><a href="../classes/Application.html">Application</a></li>
+                <li><a href="../classes/containment.html">containment</a></li>
+                <li><a href="../classes/Controller.html">Controller</a></li>
+                <li><a href="../classes/JSONSerializer.html">JSONSerializer</a></li>
+                <li><a href="../classes/Loader.html">Loader</a></li>
+                <li><a href="../classes/Model.html">Model</a></li>
+                <li><a href="../classes/ModelManager.html">ModelManager</a></li>
+                <li><a href="../classes/Registry.html">Registry</a></li>
+                <li><a href="../classes/RestSerializer.html">RestSerializer</a></li>
+                <li><a href="../classes/Route.html">Route</a></li>
+                <li><a href="../classes/Router.html">Router</a></li>
+                <li><a href="../classes/RouteSegment.html">RouteSegment</a></li>
+                <li><a href="../classes/Store.html">Store</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+        </div>
+        <div class="span9">
+    <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>Application</h1>
+</div>
+
+
+
+	<div class="well well-small">
+            Module: <a href="../modules/parch.html">parch</a>
+    </div>
+
+
+
+<div class="yuidoc-class-description">
+<p>Base application</p>
+
+</div>
+
+<!-- table of contents -->
+
+<div id="class-toc" class="page-section">
+	<h2>Table of Contents</h2>
+    <ul>
+		<li>
+			<strong>Methods</strong>
+			<ul>
+				<li><a href="#method-_configure"><span class="im">_configure</span>(<span class="ia">config</span>)</a></li>
+				<li><a href="#method-_getProjectDirectory"><span class="im">_getProjectDirectory</span>()</a></li>
+				<li><a href="#method-_initialize"><span class="im">_initialize</span>(<span class="ia">name</span>)</a></li>
+				<li><a href="#method-listen"><span class="im">listen</span>(<span class="ia">port</span>)</a></li>
+				<li><a href="#method-runProjectInitializers"><span class="im">runProjectInitializers</span>()</a></li>
+				<li><a href="#method-start"><span class="im">start</span>(<span class="ia">port</span>)</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<strong>Properties</strong>
+			<ul>
+				<li><a href="#prop-app"><span class="ip">app</span></a></li>
+				<li><a href="#prop-projectDirectory"><span class="ip">projectDirectory</span></a></li>
+			</ul>
+		</li>
+
+
+	</ul>
+</div>
+
+<!-- details -->
+
+    <div class="constructor yuidoc-class-constructor page-section">
+        <h2>Constructor</h2>
+        <div class="item-list">
+<div id="method-Application" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>Application</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>options</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l21"><code>src&#x2F;application.js:21</code></a>
+		</p>
+
+
+
+	</div>
+
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>Application config options
+<a href="https://parch-js.github.io">
+See configuration
+</a></p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+        </div>
+    </div>
+
+    <div id="methods" class="page-section">
+        <h2 class="off-left">Methods</h2>
+        <div class="item-list">
+<div id="method-_configure" class="method item private">
+	<div class="method-signature">
+	<span class="name"><code>_configure</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>config</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+		<span class="returns-inline">
+			<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+		</span>
+	</div>
+
+
+		<span class="flag private">private</span>
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l139"><code>src&#x2F;application.js:139</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Normalizes constructor options</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">config</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>user passed config options</p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+					<p>final config option</p>
+
+			</div>
+		</div>
+
+</div>
+<div id="method-_getProjectDirectory" class="method item private">
+	<div class="method-signature">
+	<span class="name"><code>_getProjectDirectory</code></span>
+
+		<span class="paren">()</span>
+		<span class="returns-inline">
+			<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+		</span>
+	</div>
+
+
+		<span class="flag private">private</span>
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l165"><code>src&#x2F;application.js:165</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Returns the project directory (cwd) from which Application is being instantiated</p>
+</div>
+
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+					<p>directory</p>
+
+			</div>
+		</div>
+
+</div>
+<div id="method-_initialize" class="method item private">
+	<div class="method-signature">
+	<span class="name"><code>_initialize</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>name</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+		<span class="flag private">private</span>
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l179"><code>src&#x2F;application.js:179</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Run an initializer by name</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">name</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+<div id="method-listen" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>listen</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>port</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+		<span class="returns-inline">
+			<span class="type">Promise<void></span>
+		</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l75"><code>src&#x2F;application.js:75</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Starts the server</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">port</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+
+				</li>
+			</ul>
+		</div>
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type">Promise<void></span>
+			</div>
+		</div>
+
+</div>
+<div id="method-runProjectInitializers" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>runProjectInitializers</code></span>
+
+		<span class="paren">()</span>
+		<span class="returns-inline">
+			<span class="type">Promise<void></span>
+		</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l97"><code>src&#x2F;application.js:97</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Runs all consumer initializers</p>
+</div>
+
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type">Promise<void></span>
+			</div>
+		</div>
+
+</div>
+<div id="method-start" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>start</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>port</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+		<span class="returns-inline">
+			<span class="type">Promise<undefined, Error></span>
+		</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_application.js.html#l128"><code>src&#x2F;application.js:128</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>starts listening on the defined port</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">port</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+					<div class="param-description"><p>the port to listen on. Default: 3000</p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type">Promise<undefined, Error></span>
+			</div>
+		</div>
+
+</div>
+        </div>
+    </div>
+
+    <div id="properties" class="page-section">
+        <h2 class="off-left">Properties</h2>
+
+        <div class="item-list">
+<div id="prop-app" class="property item">
+    <h3 class="name"><code>app</code></h3>
+    <span class="type">Object Restify service</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_application.js.html#l65"><code>src&#x2F;application.js:65</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Restify application instance</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-projectDirectory" class="property item">
+    <h3 class="name"><code>projectDirectory</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_application.js.html#l87"><code>src&#x2F;application.js:87</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The consuming project's directory</p>
+
+    </div>
+
+
+
+</div>
+        </div>
+    </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

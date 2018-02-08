@@ -1,0 +1,1584 @@
+{
+    "project": {
+        "name": "Parch",
+        "url": "https://github.com/parch-js/parch",
+        "version": "2.1.2",
+        "description": "Restify + Sequelize"
+    },
+    "files": {
+        "src/serializers/json.js": {
+            "name": "src/serializers/json.js",
+            "modules": {},
+            "classes": {
+                "JSONSerializer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/serializers/rest.js": {
+            "name": "src/serializers/rest.js",
+            "modules": {},
+            "classes": {
+                "RestSerializer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/application.js": {
+            "name": "src/application.js",
+            "modules": {},
+            "classes": {
+                "Application": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/containment.js": {
+            "name": "src/containment.js",
+            "modules": {},
+            "classes": {
+                "containment": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/controller.js": {
+            "name": "src/controller.js",
+            "modules": {},
+            "classes": {
+                "Controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/loader.js": {
+            "name": "src/loader.js",
+            "modules": {},
+            "classes": {
+                "Loader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/model.js": {
+            "name": "src/model.js",
+            "modules": {},
+            "classes": {
+                "Model": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/model_manager.js": {
+            "name": "src/model_manager.js",
+            "modules": {},
+            "classes": {
+                "ModelManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/registry.js": {
+            "name": "src/registry.js",
+            "modules": {},
+            "classes": {
+                "Registry": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/route.js": {
+            "name": "src/route.js",
+            "modules": {},
+            "classes": {
+                "Route": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/route_segment.js": {
+            "name": "src/route_segment.js",
+            "modules": {},
+            "classes": {
+                "RouteSegment": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/router.js": {
+            "name": "src/router.js",
+            "modules": {},
+            "classes": {
+                "Router": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/store.js": {
+            "name": "src/store.js",
+            "modules": {},
+            "classes": {
+                "Store": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "index.js": {
+            "name": "index.js",
+            "modules": {
+                "parch": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "parch": {
+            "name": "parch",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "JSONSerializer": 1,
+                "RestSerializer": 1,
+                "Application": 1,
+                "containment": 1,
+                "Controller": 1,
+                "Loader": 1,
+                "Model": 1,
+                "ModelManager": 1,
+                "Registry": 1,
+                "Route": 1,
+                "RouteSegment": 1,
+                "Router": 1,
+                "Store": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/store.js",
+            "line": 7
+        }
+    },
+    "classes": {
+        "JSONSerializer": {
+            "name": "JSONSerializer",
+            "shortname": "JSONSerializer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/serializers/json.js",
+            "line": 5,
+            "is_constructor": 1,
+            "extends": "<a href=\"parch-js/json-serializer\"\" target=\"_blank\"> Parch JSONSerializer</a>"
+        },
+        "RestSerializer": {
+            "name": "RestSerializer",
+            "shortname": "RestSerializer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/serializers/rest.js",
+            "line": 5,
+            "is_constructor": 1,
+            "extends": "<a href=\"https://github.com/parch-js/rest-serializer\"\" target=\"_blank\"> Parch RestSerializer</a>"
+        },
+        "Application": {
+            "name": "Application",
+            "shortname": "Application",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/application.js",
+            "line": 21,
+            "description": "Base application",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Application config options\n<a href=\"https://parch-js.github.io\">\n  See configuration\n</a>",
+                    "type": "Object"
+                }
+            ]
+        },
+        "containment": {
+            "name": "containment",
+            "shortname": "containment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/containment.js",
+            "line": 44
+        },
+        "Controller": {
+            "name": "Controller",
+            "shortname": "Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/controller.js",
+            "line": 9,
+            "description": "Base controller",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "registry",
+                    "description": "module registry",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "configuration options",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "model",
+                            "description": "override the default model name",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "todo": [
+                "add default restfull methods (index",
+                "show",
+                "etc)"
+            ]
+        },
+        "Loader": {
+            "name": "Loader",
+            "shortname": "Loader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/loader.js",
+            "line": 6,
+            "description": "The loader class manages module loading (e.g. controllers and models)",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "type",
+                            "description": "the loader type (controller, model, etc)",
+                            "type": "String"
+                        },
+                        {
+                            "name": "filter",
+                            "description": "loader filter",
+                            "type": "RegExp"
+                        },
+                        {
+                            "name": "path",
+                            "description": "module loader path",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Model": {
+            "name": "Model",
+            "shortname": "Model",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/model.js",
+            "line": 5,
+            "description": "Base model",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "sequelize model options\n<a href=\"http://docs.sequelizejs.com/en/v3/docs/models-definition/#configuration\" target=\"_blank\">\n  Sequelize Configuration\n</a>",
+                    "type": "Object"
+                }
+            ]
+        },
+        "ModelManager": {
+            "name": "ModelManager",
+            "shortname": "ModelManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/model_manager.js",
+            "line": 6,
+            "description": "Manages all models",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "connection",
+                            "description": "",
+                            "type": "Object"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Registry": {
+            "name": "Registry",
+            "shortname": "Registry",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/registry.js",
+            "line": 11,
+            "is_constructor": 1
+        },
+        "Route": {
+            "name": "Route",
+            "shortname": "Route",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/route.js",
+            "line": 5,
+            "description": "Builds a consistent route path from a set of path segments",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "segment",
+                    "description": "",
+                    "type": "String",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "path object",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nnew Route(\"foo\", \"/bar\", \"baz/\");\n/**\n * {\n *   path: \"/foo/bar/baz\"\n *   segments: [\n *     {{#crossLink \"RouteSegment\"}}RouteSegment{{/crossLink}},\n *     {{#crossLink \"RouteSegment\"}}RouteSegment{{/crossLink}},\n *     {{#crossLink \"RouteSegment\"}}RouteSegment{{/crossLink}}\n *   ]\n * }\n *\n```"
+            ]
+        },
+        "RouteSegment": {
+            "name": "RouteSegment",
+            "shortname": "RouteSegment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/route_segment.js",
+            "line": 3,
+            "description": "Represents a single route segment, providing a consistent output segment\nregardless of trailing/leading slashes",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "segment",
+                    "description": "A single route segment",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n```javascript\nnew RouteSegment(\"/foo\"); => { path: \"/foo\", segment: \"/foo\" }\nnew RouteSegment(\"foo\"); => { path: \"/foo\", segment: \"foo\" }\nnew RouteSegment(\"/foo/\"); => { path: \"/foo\", segment: \"/foo/\" }\nnew RouteSegment(\"foo/\"); => { path: \"/foo\", segment: \"foo/\" }\n```"
+            ]
+        },
+        "Router": {
+            "name": "Router",
+            "shortname": "Router",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/router.js",
+            "line": 27,
+            "description": "Manages routing",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "registry",
+                    "description": "{{#crossLink \"Registry\"}}module registry{{/crossLink}}",
+                    "type": "Object"
+                }
+            ]
+        },
+        "Store": {
+            "name": "Store",
+            "shortname": "Store",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parch",
+            "file": "src/store.js",
+            "line": 7,
+            "description": "Parch overrides the base ORM class to implement the serializer defined for\neach controller. If no serializer is defined, the\n{{#crossLink \"RestSerializer\"}}RestSerializer{{/crossLink}} is used.",
+            "is_constructor": 1,
+            "extends": "<a href=\"parch-js/orm\" target=\"_blank\">Parch ORM</a>"
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "src/application.js",
+            "line": 65,
+            "description": "Restify application instance",
+            "itemtype": "property",
+            "name": "app",
+            "type": "{Object} Restify service",
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 75,
+            "description": "Starts the server",
+            "itemtype": "method",
+            "name": "listen",
+            "params": [
+                {
+                    "name": "port",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise<void>"
+            },
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 87,
+            "description": "The consuming project's directory",
+            "itemtype": "property",
+            "name": "projectDirectory",
+            "type": "{String}",
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 97,
+            "description": "Runs all consumer initializers",
+            "itemtype": "method",
+            "name": "runProjectInitializers",
+            "return": {
+                "description": "",
+                "type": "Promise<void>"
+            },
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 128,
+            "description": "starts listening on the defined port",
+            "itemtype": "method",
+            "name": "start",
+            "params": [
+                {
+                    "name": "port",
+                    "description": "the port to listen on. Default: 3000",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise<undefined, Error>"
+            },
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 139,
+            "description": "Normalizes constructor options",
+            "itemtype": "method",
+            "name": "_configure",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "user passed config options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "final config option",
+                "type": "Object"
+            },
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 165,
+            "description": "Returns the project directory (cwd) from which Application is being instantiated",
+            "itemtype": "method",
+            "name": "_getProjectDirectory",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "directory",
+                "type": "String"
+            },
+            "class": "Application"
+        },
+        {
+            "file": "src/application.js",
+            "line": 179,
+            "description": "Run an initializer by name",
+            "itemtype": "method",
+            "name": "_initialize",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Application"
+        },
+        {
+            "file": "src/containment.js",
+            "line": 5,
+            "description": "Get the owner of an object",
+            "itemtype": "method",
+            "name": "getOwner",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "object from which to fetch the parent",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "parent (owner)",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nclass UserController extends parch.Controller {\n  doStuff(req, res, next) {\n    const store = getOwner(this).lookup(\"service:store\");\n\n    return store.findAll();\n  }\n}\n```"
+            ],
+            "class": "containment"
+        },
+        {
+            "file": "src/containment.js",
+            "line": 26,
+            "description": "Set the owner object of the child object",
+            "itemtype": "method",
+            "name": "setOwner",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "child object",
+                    "type": "Object"
+                },
+                {
+                    "name": "parent",
+                    "description": "parent (owner) object",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n```javascript\nsetOwner({}, \"service:store\", \"store\");\n\n{}.store\n```"
+            ],
+            "class": "containment"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 48,
+            "description": "Restify errors map\n<a href=\"https://github.com/restify/errors\">\nrestify-errors\n</a>",
+            "itemtype": "property",
+            "name": "errors",
+            "type": "{Object}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 59,
+            "description": "Object containing all models registered",
+            "itemtype": "property",
+            "name": "models",
+            "type": "{Array}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 67,
+            "description": "The name of the model that belongs to this controller. If one cannot be\nfound this will be undefined",
+            "itemtype": "property",
+            "name": "modelName",
+            "type": "{String}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 76,
+            "description": "Pluralized version of modelName",
+            "itemtype": "property",
+            "name": "modelNameLookup",
+            "type": "{String}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 84,
+            "description": "An object mapping of status codes and their corresponding value",
+            "itemtype": "property",
+            "name": "STATUS_CODES",
+            "type": "{Object}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 92,
+            "description": "Instance of {{#crossLink \"Store\"}}Store{{/crossLink}}",
+            "itemtype": "property",
+            "name": "store",
+            "type": "{Object}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 101,
+            "description": "The model class that belongs to this controller. If none could be found\nthis will be undefined.",
+            "itemtype": "property",
+            "name": "internalModel",
+            "type": "{Object}",
+            "class": "Controller"
+        },
+        {
+            "file": "src/controller.js",
+            "line": 117,
+            "description": "Returns the name of the model that is associated with this controller.\nIf options.model is passed to controller it will take precedence, otherwise\nthe controller will attempt to lookup a model matching the controller's name",
+            "itemtype": "method",
+            "name": "getModelName",
+            "params": [
+                {
+                    "name": "model",
+                    "description": "name of the model to use",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "modelName",
+                "type": "String"
+            },
+            "class": "Controller"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 18,
+            "description": "Loader type",
+            "itemtype": "property",
+            "name": "type",
+            "type": "{String}",
+            "class": "Loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 26,
+            "description": "Loader filter",
+            "itemtype": "property",
+            "name": "filter",
+            "type": "{String}",
+            "class": "Loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 34,
+            "description": "Module load path",
+            "itemtype": "property",
+            "name": "loadPath",
+            "type": "{String}",
+            "class": "Loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 44,
+            "description": "Returns the loaded module object by name",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "module object",
+                "type": "Object"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 55,
+            "description": "Returns the default filter RegExp",
+            "itemtype": "method",
+            "name": "_getDefaultFilter",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "RegExp"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 66,
+            "description": "Attempts to load all modules by given filter path",
+            "itemtype": "method",
+            "name": "_loadModules",
+            "access": "private",
+            "tagname": "",
+            "class": "Loader"
+        },
+        {
+            "file": "src/model.js",
+            "line": 24,
+            "description": "Model options get passed directly to sequelize model definition. The main\ndifference is the separation of model constructor options and model\nattribute definitions.\n\n<a href=\"http://docs.sequelizejs.com/en/v3/docs/models-definition/\" target=\"_blank\">\n  see http://docs.sequelizejs.com/en/v3/docs/models-definition/\n</a>",
+            "itemtype": "property",
+            "name": "options",
+            "type": "{Object}",
+            "class": "Model"
+        },
+        {
+            "file": "src/model.js",
+            "line": 39,
+            "description": "Model definition",
+            "itemtype": "method",
+            "name": "define",
+            "params": [
+                {
+                    "name": "DataTypes",
+                    "description": "sequelize DataTypes Object\n<a href=\"http://docs.sequelizejs.com/en/v3/docs/models-definition/#data-types\" target=\"_blank\">\n  See Sequelize DataTypes\n</a>",
+                    "type": "Object"
+                }
+            ],
+            "example": [
+                "\n```javascript\ndefine(DataTypes) {\n  const user = {\n    username: {\n      allowNull: false\n      type: DataTypes.STRING\n    }\n  };\n\n  return user;\n}\n```"
+            ],
+            "class": "Model"
+        },
+        {
+            "file": "src/model_manager.js",
+            "line": 22,
+            "description": "Map of Sequelize models",
+            "itemtype": "property",
+            "name": "_models",
+            "access": "private",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "ModelManager"
+        },
+        {
+            "file": "src/model_manager.js",
+            "line": 31,
+            "description": "Sequelize class",
+            "itemtype": "property",
+            "name": "Sequelize",
+            "type": "{Object}",
+            "class": "ModelManager"
+        },
+        {
+            "file": "src/model_manager.js",
+            "line": 39,
+            "description": "Sequelize instance",
+            "itemtype": "property",
+            "name": "sequelize",
+            "type": "{Object}",
+            "class": "ModelManager"
+        },
+        {
+            "file": "src/model_manager.js",
+            "line": 53,
+            "description": "Adds a model to internal cache\n\n    class FooModel extends parch.Model {\n      constructor(options) {\n        super(options);\n      }\n\n      associate(Foo, models) {\n      }\n\n      define(DataTypes) {\n      }\n    }\n\n    modelManager.addModel(Model);",
+            "itemtype": "method",
+            "name": "addModel",
+            "params": [
+                {
+                    "name": "Model",
+                    "description": "parch model class",
+                    "type": "Object"
+                }
+            ],
+            "class": "ModelManager"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 20,
+            "description": "Inject an object into another object",
+            "itemtype": "method",
+            "name": "inject",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "the object to inject onto",
+                    "type": "Object"
+                },
+                {
+                    "name": "lookup",
+                    "description": "name by which to look search for the injection in the registry",
+                    "type": "String"
+                },
+                {
+                    "name": "propertyName",
+                    "description": "optional property name of the newly injected object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "context",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nregistry.inject(object, \"service:store\");\n// object.store\n\nregistry.inject(object, \"service:model-manager\", \"modelManager\");\n// object.modelManager\n```"
+            ],
+            "class": "Registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 67,
+            "description": "Find an object in the registry. If the object isn't found in the registry,\nlookup will attempt to find it by requiring it in. If the require fails\nthe lookup fails",
+            "itemtype": "method",
+            "name": "lookup",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "colon delimited lookup string \"service:foo\"",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nregistry.lookup(\"service:foo\");\n```"
+            ],
+            "class": "Registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 99,
+            "description": "Register an object in the registry by name. If the name exists and it was\nregistered with the { singleton: true } option, an error will be thrown.",
+            "itemtype": "method",
+            "name": "register",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "the name by which to register the object",
+                    "type": "String"
+                },
+                {
+                    "name": "Obj",
+                    "description": "the object to store in the registry",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "register options",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "instantiate",
+                            "description": "instantiate the object when registering it",
+                            "type": "Boolean"
+                        },
+                        {
+                            "name": "singleton",
+                            "description": "only allow one registration of this name/object",
+                            "type": "Boolean"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Obj",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nregistry.register(\"service:foo\", { foo: \"bar\" });\n```"
+            ],
+            "class": "Registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 143,
+            "description": "Get the lookup directory for internal modules",
+            "itemtype": "method",
+            "name": "_getLookupDirectory",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "lookup",
+                    "description": "string name of object we're looking for (e.g. 'module')",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "directory",
+                "type": "String"
+            },
+            "class": "Registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 154,
+            "description": "Attempts to load modules by requiring them in locally. Lookup directory is\ndetermined by the type of object we're loading (e.g. 'module' => ./) and the\nname of the module (e.g. 'model-manager') which is underscored",
+            "itemtype": "method",
+            "name": "_loadModule",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "lookup",
+                    "description": "string name of object we're looking for (e.g. 'module')",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "string module name",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "required module",
+                "type": "Object"
+            },
+            "class": "Registry"
+        },
+        {
+            "file": "src/route.js",
+            "line": 33,
+            "description": "The path is the fully built path from segments e.g. /foo/bar/baz",
+            "itemtype": "property",
+            "name": "path",
+            "type": "{String}",
+            "class": "Route"
+        },
+        {
+            "file": "src/route.js",
+            "line": 41,
+            "description": "All segments that make up this route. Consists of an array of {{#crossLink \"RouteSegment\"}}RouteSegments{{/crossLink}}",
+            "itemtype": "property",
+            "name": "segments",
+            "type": "{Array}",
+            "class": "Route"
+        },
+        {
+            "file": "src/route_segment.js",
+            "line": 21,
+            "description": "Segment represents the original path segment that was passed in",
+            "itemtype": "property",
+            "name": "segment",
+            "type": "{String}",
+            "class": "RouteSegment"
+        },
+        {
+            "file": "src/route_segment.js",
+            "line": 29,
+            "description": "The normalized path segment after removing/adding slashes",
+            "itemtype": "property",
+            "name": "path",
+            "type": "{String}",
+            "class": "RouteSegment"
+        },
+        {
+            "file": "src/route_segment.js",
+            "line": 37,
+            "description": "Determines if a path segment contains a leading slash /",
+            "itemtype": "method",
+            "name": "hasLeadingSlash",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n```javascript\nnew RouteSegment(\"foo\").hasLeadingSlash(); => false\nnew RouteSegment(\"foo/\").hasLeadingSlash(); => false\nnew RouteSegment(\"/foo/\").hasLeadingSlash(); => true\nnew RouteSegment(\"/foo\").hasLeadingSlash(); => true\n```"
+            ],
+            "class": "RouteSegment"
+        },
+        {
+            "file": "src/route_segment.js",
+            "line": 55,
+            "description": "Determines if a path segment contains a trailing slash /",
+            "itemtype": "method",
+            "name": "hasTrailingSlash",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n```javascript\nnew RouteSegment(\"foo\").hasTrailingSlash(); => false\nnew RouteSegment(\"/foo\").hasTrailingSlash(); => false\nnew RouteSegment(\"/foo/\").hasTrailingSlash(); => true\nnew RouteSegment(\"foo/\").hasTrailingSlash(); => true\n```"
+            ],
+            "class": "RouteSegment"
+        },
+        {
+            "file": "src/route_segment.js",
+            "line": 73,
+            "description": "Builds a consistent path segment, regardless of slashes",
+            "itemtype": "method",
+            "name": "_buildSegment",
+            "return": {
+                "description": "path segment",
+                "type": "String"
+            },
+            "class": "RouteSegment"
+        },
+        {
+            "file": "src/router.js",
+            "line": 40,
+            "description": "Contains the model and controller {{#crossLink \"Loader\"}}loaders{{/crossLink}}",
+            "itemtype": "property",
+            "name": "loader",
+            "type": "{Object}",
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 51,
+            "description": "An optional namespace to place before all routes (e.g. /v1)",
+            "itemtype": "property",
+            "name": "namespacePrefix",
+            "type": "{String}",
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 61,
+            "description": "Bind a set of routes to a namespace.\nUses {{#crossLink \"Router/_buildRoute:method\"}}_buildRoute{{/crossLink}} to\nnormalize the path",
+            "itemtype": "method",
+            "name": "namespace",
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "the namespace to bind to, with or without leading slash",
+                    "type": "String"
+                },
+                {
+                    "name": "routes",
+                    "description": "array of routes to bind to the namespace",
+                    "type": "Object[]"
+                }
+            ],
+            "since": "0.9.0",
+            "example": [
+                "\n```javascript\nRouter.map(function () {\n  this.namespace(\"/users/:userId\", [\n    { path: \"/setProfileImage\", using: \"user:setImage\", method: \"post\" }\n  ])\n});\n```"
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 95,
+            "description": "Register a resource and wire up restful endpoints.\nUses {{#crossLink \"Router/_buildRoute:method\"}}_buildRoute{{/crossLink}} to\nnormalize the path and builds your 5 basic CRUD endpoints",
+            "itemtype": "method",
+            "name": "resource",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "the resource name in singular form",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "resource mapping options",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "namespace",
+                            "description": "mount the resource endpoint under a namespace",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "example": [
+                "\n```javascript\nRouter.map(function () {\n  this.resource(\"user\");\n\n  // Optionally prefix this resource with a namespace\n  this.resource(\"user\", { namespace: \"api\" })\n});\n```"
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 145,
+            "description": "Register a single route.\nUses {{#crossLink \"Router/_buildRoute:method\"}}_buildRoute{{/crossLink}} to\nnormalize the path",
+            "itemtype": "method",
+            "name": "route",
+            "params": [
+                {
+                    "name": "path",
+                    "description": "the route path (e.g. /foo/bar)",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "using",
+                            "description": "colon delimited controller method identifier",
+                            "type": "String"
+                        },
+                        {
+                            "name": "method",
+                            "description": "http method",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "example": [
+                "\n```javascript\nRouter.map(function () {\n  this.route(\"/user/foo\", { using: \"users:foo\", method: \"get\" });\n});\n```"
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 184,
+            "description": "Consistently builds a route from a set of path segments using\n{{#crossLink \"Route\"}}Route{{/crossLink}}",
+            "itemtype": "method",
+            "name": "_buildRoute",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "route object with path property",
+                "type": "Object"
+            },
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 196,
+            "description": "generates main route handler plus pre and post hooks",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_generateControllerHandlers",
+            "params": [
+                {
+                    "name": "controller",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "action",
+                    "description": "controller method",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "handlers",
+                "type": "Array"
+            },
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 220,
+            "description": "Generates a path segment from a given resource name",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_getPathSegment",
+            "params": [
+                {
+                    "name": "resource",
+                    "description": ""
+                },
+                {
+                    "name": "action",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "pathSegment (e.g. `:userId`)",
+                "type": "String"
+            },
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 239,
+            "description": "loads controllers from the loader",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_loadControllers",
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 286,
+            "description": "Attempts to lookup a serializer by 'name' in the module loader. If one exists\nit is instantiated and registered by 'name'. If one does not exist the\ndefault JSONSerializer is instantiated and registered.",
+            "itemtype": "method",
+            "name": "_lookupSerializer",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "lowercase singular lookup name (e.g. \"user\")",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "serializer instance",
+                "type": "Object"
+            },
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 316,
+            "description": "maps a resource controller action and route",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_mapControllerAction",
+            "params": [
+                {
+                    "name": "resource",
+                    "description": "the resource name",
+                    "type": "String"
+                },
+                {
+                    "name": "controller",
+                    "description": "the resource controller",
+                    "type": "Object"
+                },
+                {
+                    "name": "action",
+                    "description": "the controller method",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "mapping options",
+                    "type": "Object"
+                }
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 345,
+            "description": "Registers controller beforeModel and afterModel hooks",
+            "itemtype": "method",
+            "name": "_registerControllerHooks",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "controller",
+                    "description": "{{#crossLink \"Controller\"}}controller{{/crossLink}}",
+                    "type": "Object"
+                },
+                {
+                    "name": "handlers",
+                    "description": "restify request handlers",
+                    "type": "Array"
+                }
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 363,
+            "description": "Registers legacy controller before/after hooks",
+            "itemtype": "method",
+            "name": "_registerLegacyControllerHooks",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "controller",
+                    "description": "{{#crossLink \"Controller\"}}controller{{/crossLink}}",
+                    "type": "Object"
+                },
+                {
+                    "name": "action",
+                    "description": "controller action type (index, create, update, etc)",
+                    "type": "String"
+                },
+                {
+                    "name": "handlers",
+                    "description": "restify request handlers",
+                    "type": "Array"
+                }
+            ],
+            "class": "Router"
+        },
+        {
+            "file": "src/router.js",
+            "line": 384,
+            "description": "configures router resources",
+            "static": 1,
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "called with the router instance",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Undefined"
+            },
+            "class": "Router"
+        },
+        {
+            "file": "src/store.js",
+            "line": 25,
+            "description": "Creates a record",
+            "itemtype": "method",
+            "name": "createRecord",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "seralized record instance",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nreturn store.createRecord(\"user\", {\n  firstName: \"hank\",\n  lastName: \"hill\"\n});\n```"
+            ],
+            "class": "Store"
+        },
+        {
+            "file": "src/store.js",
+            "line": 48,
+            "description": "Returns all records. Passing an optional query will query those records.",
+            "itemtype": "method",
+            "name": "findAll",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "serialized record arry",
+                "type": "Array|Object"
+            },
+            "example": [
+                "\n```javascript\nreturn store.findAll(\"user\");\n\nreturn store.findAll(\"user\", {\n  firstName: \"Jon\"\n})\n```"
+            ],
+            "class": "Store"
+        },
+        {
+            "file": "src/store.js",
+            "line": 72,
+            "description": "Returns a single record by id",
+            "itemtype": "method",
+            "name": "findOne",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "serialized record array",
+                "type": "Array|Object"
+            },
+            "example": [
+                "\n```javascript\nreturn store.findOne(\"user\", 1);\n```"
+            ],
+            "class": "Store"
+        },
+        {
+            "file": "src/store.js",
+            "line": 92,
+            "description": "Returns the first record matching the passed query",
+            "itemtype": "method",
+            "name": "queryRecord",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "serialized record instance",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nreturn store.queryRecord(\"user\", {\n  firstName: \"jon\"\n})\n```"
+            ],
+            "class": "Store"
+        },
+        {
+            "file": "src/store.js",
+            "line": 114,
+            "description": "Updates a record by id",
+            "itemtype": "method",
+            "name": "updateRecord",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "seralized record instance",
+                "type": "Object"
+            },
+            "example": [
+                "\n```javascript\nreturn store.updateRecord(\"user\", 1, { firstName: \"Jane\" });\n```"
+            ],
+            "class": "Store"
+        },
+        {
+            "file": "src/store.js",
+            "line": 134,
+            "description": "Attempts to load the serialized for a particular model",
+            "itemtype": "method",
+            "name": "_lookupSerializer",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "serializer",
+                "type": "Object"
+            },
+            "class": "Store"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/application.js:75"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/application.js:97"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/application.js:139"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/application.js:165"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/containment.js:5"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/controller.js:117"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/loader.js:44"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/loader.js:55"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/registry.js:20"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/registry.js:67"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/registry.js:99"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/registry.js:143"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/registry.js:154"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/router.js:220"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:25"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:48"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:72"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:92"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:114"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/store.js:134"
+        },
+        {
+            "message": "Missing item type\nconfigures router resources",
+            "line": " src/router.js:384"
+        }
+    ]
+}

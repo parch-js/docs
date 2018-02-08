@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Controller - Parch</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Parch
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>2.1.2</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Application", "classes/containment", "classes/Controller", "classes/JSONSerializer", "classes/Loader", "classes/Model", "classes/ModelManager", "classes/Registry", "classes/RestSerializer", "classes/Route", "classes/Router", "classes/RouteSegment", "classes/Store", "modules/parch"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+<div>
+    <div id="sidebar">
+    <div id="classes">
+        <ul id="api-classes" class="nav nav-list">
+                <li><a href="../classes/Application.html">Application</a></li>
+                <li><a href="../classes/containment.html">containment</a></li>
+                <li><a href="../classes/Controller.html">Controller</a></li>
+                <li><a href="../classes/JSONSerializer.html">JSONSerializer</a></li>
+                <li><a href="../classes/Loader.html">Loader</a></li>
+                <li><a href="../classes/Model.html">Model</a></li>
+                <li><a href="../classes/ModelManager.html">ModelManager</a></li>
+                <li><a href="../classes/Registry.html">Registry</a></li>
+                <li><a href="../classes/RestSerializer.html">RestSerializer</a></li>
+                <li><a href="../classes/Route.html">Route</a></li>
+                <li><a href="../classes/Router.html">Router</a></li>
+                <li><a href="../classes/RouteSegment.html">RouteSegment</a></li>
+                <li><a href="../classes/Store.html">Store</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+        </div>
+        <div class="span9">
+    <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>Controller</h1>
+</div>
+
+
+
+	<div class="well well-small">
+            Module: <a href="../modules/parch.html">parch</a>
+    </div>
+
+
+
+<div class="yuidoc-class-description">
+<p>Base controller</p>
+
+</div>
+
+<!-- table of contents -->
+
+<div id="class-toc" class="page-section">
+	<h2>Table of Contents</h2>
+    <ul>
+		<li>
+			<strong>Methods</strong>
+			<ul>
+				<li><a href="#method-getModelName"><span class="im">getModelName</span>(<span class="ia">model</span>)</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<strong>Properties</strong>
+			<ul>
+				<li><a href="#prop-errors"><span class="ip">errors</span></a></li>
+				<li><a href="#prop-internalModel"><span class="ip">internalModel</span></a></li>
+				<li><a href="#prop-modelName"><span class="ip">modelName</span></a></li>
+				<li><a href="#prop-modelNameLookup"><span class="ip">modelNameLookup</span></a></li>
+				<li><a href="#prop-models"><span class="ip">models</span></a></li>
+				<li><a href="#prop-STATUS_CODES"><span class="ip">STATUS_CODES</span></a></li>
+				<li><a href="#prop-store"><span class="ip">store</span></a></li>
+			</ul>
+		</li>
+
+
+	</ul>
+</div>
+
+<!-- details -->
+
+    <div class="constructor yuidoc-class-constructor page-section">
+        <h2>Constructor</h2>
+        <div class="item-list">
+<div id="method-Controller" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>Controller</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>registry</code>
+				</li>
+				<li class="arg">
+						<code>options</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_controller.js.html#l9"><code>src&#x2F;controller.js:9</code></a>
+		</p>
+
+
+
+	</div>
+
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">registry</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>module registry</p>
+</div>
+
+				</li>
+				<li class="param">
+						<code class="param-name">options</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+					<div class="param-description"><p>configuration options</p>
+</div>
+
+						<ul class="params-list">
+							<li class="param">
+									<code class="param-name">model</code>
+									<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+								<div class="param-description"><p>override the default model name</p>
+</div>
+
+							</li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+
+
+</div>
+        </div>
+    </div>
+
+    <div id="methods" class="page-section">
+        <h2 class="off-left">Methods</h2>
+        <div class="item-list">
+<div id="method-getModelName" class="method item">
+	<div class="method-signature">
+	<span class="name"><code>getModelName</code></span>
+
+		<div class="args">
+			<span class="paren">(</span><ul class="args-list inline commas">
+				<li class="arg">
+						<code>model</code>
+				</li>
+			</ul><span class="paren">)</span>
+		</div>
+		<span class="returns-inline">
+			<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+		</span>
+	</div>
+
+
+
+
+
+
+	<div class="meta">
+				<p>
+				Defined in
+		<a href="../files/src_controller.js.html#l117"><code>src&#x2F;controller.js:117</code></a>
+		</p>
+
+
+
+	</div>
+
+	<div class="description"><p>Returns the name of the model that is associated with this controller.
+If options.model is passed to controller it will take precedence, otherwise
+the controller will attempt to lookup a model matching the controller's name</p>
+</div>
+
+		<div class="params">
+			<h4>Parameters:</h4>
+
+			<ul class="params-list">
+				<li class="param">
+						<code class="param-name">model</code>
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+					<div class="param-description"><p>name of the model to use</p>
+</div>
+
+				</li>
+			</ul>
+		</div>
+
+		<div class="returns">
+			<h4>Returns:</h4>
+
+			<div class="returns-description">
+						<span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+					<p>modelName</p>
+
+			</div>
+		</div>
+
+</div>
+        </div>
+    </div>
+
+    <div id="properties" class="page-section">
+        <h2 class="off-left">Properties</h2>
+
+        <div class="item-list">
+<div id="prop-errors" class="property item">
+    <h3 class="name"><code>errors</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l48"><code>src&#x2F;controller.js:48</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Restify errors map
+<a href="https://github.com/restify/errors">
+restify-errors
+</a></p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-internalModel" class="property item">
+    <h3 class="name"><code>internalModel</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l101"><code>src&#x2F;controller.js:101</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The model class that belongs to this controller. If none could be found
+this will be undefined.</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-modelName" class="property item">
+    <h3 class="name"><code>modelName</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l67"><code>src&#x2F;controller.js:67</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The name of the model that belongs to this controller. If one cannot be
+found this will be undefined</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-modelNameLookup" class="property item">
+    <h3 class="name"><code>modelNameLookup</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l76"><code>src&#x2F;controller.js:76</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Pluralized version of modelName</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-models" class="property item">
+    <h3 class="name"><code>models</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l59"><code>src&#x2F;controller.js:59</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Object containing all models registered</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-STATUS_CODES" class="property item">
+    <h3 class="name"><code>STATUS_CODES</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l84"><code>src&#x2F;controller.js:84</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>An object mapping of status codes and their corresponding value</p>
+
+    </div>
+
+
+
+</div>
+<div id="prop-store" class="property item">
+    <h3 class="name"><code>store</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_controller.js.html#l92"><code>src&#x2F;controller.js:92</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Instance of <a href="../classes/Store.html" class="crosslink">Store</a></p>
+
+    </div>
+
+
+
+</div>
+        </div>
+    </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/controller.js - Parch</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Parch
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>2.1.2</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Application", "classes/containment", "classes/Controller", "classes/JSONSerializer", "classes/Loader", "classes/Model", "classes/ModelManager", "classes/Registry", "classes/RestSerializer", "classes/Route", "classes/Router", "classes/RouteSegment", "classes/Store", "modules/parch"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+<div>
+    <div id="sidebar">
+    <div id="classes">
+        <ul id="api-classes" class="nav nav-list">
+                <li><a href="../classes/Application.html">Application</a></li>
+                <li><a href="../classes/containment.html">containment</a></li>
+                <li><a href="../classes/Controller.html">Controller</a></li>
+                <li><a href="../classes/JSONSerializer.html">JSONSerializer</a></li>
+                <li><a href="../classes/Loader.html">Loader</a></li>
+                <li><a href="../classes/Model.html">Model</a></li>
+                <li><a href="../classes/ModelManager.html">ModelManager</a></li>
+                <li><a href="../classes/Registry.html">Registry</a></li>
+                <li><a href="../classes/RestSerializer.html">RestSerializer</a></li>
+                <li><a href="../classes/Route.html">Route</a></li>
+                <li><a href="../classes/Router.html">Router</a></li>
+                <li><a href="../classes/RouteSegment.html">RouteSegment</a></li>
+                <li><a href="../classes/Store.html">Store</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+        </div>
+        <div class="span9">
+    <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>src/controller.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+&quot;use strict&quot;;
+
+import errors from &quot;restify-errors&quot;;
+import inflect from &quot;inflect&quot;;
+
+import STATUS_CODES from &quot;./utils/status_codes&quot;;
+import { setOwner } from &quot;./containment&quot;;
+
+/**
+ * Base controller
+ *
+ * @class Controller
+ * @constructor
+ *
+ * @param {Object} registry module registry
+ * @param {Object} options configuration options
+ * @param {String} options.model override the default model name
+ * @todo add default restfull methods (index, show, etc)
+ */
+class Controller {
+  get name() {
+    return inflect.singularize(
+      this.constructor.name.split(/controller/i)[0].toLowerCase()
+    );
+  }
+
+  constructor(registry, options = {}) {
+    setOwner(this, registry);
+
+    if (options.parent) {
+      Object.defineProperty(this, &quot;isChild&quot;, {
+        enumerable: true,
+        configurable: false,
+        get() {
+          return true;
+        }
+      });
+
+      Object.defineProperty(this, &quot;__parent&quot;, {
+        enumerable: true,
+        configurable: false,
+        get() {
+          return options.parent;
+        }
+      });
+    }
+
+    /**
+     * Restify errors map
+     * &lt;a href=&quot;https://github.com/restify/errors&quot;&gt;
+     * restify-errors
+     * &lt;/a&gt;
+     *
+     * @property errors
+     * @type {Object}
+     */
+    this.errors = errors;
+
+    /**
+     * Object containing all models registered
+     *
+     * @property models
+     * @type {Array}
+     */
+    this.models = registry.lookup(&quot;service:model-manager&quot;).models;
+
+    /**
+     * The name of the model that belongs to this controller. If one cannot be
+     * found this will be undefined
+     *
+     * @property modelName
+     * @type {String}
+     */
+    this.modelName = this.getModelName(options.model);
+
+    /**
+     * Pluralized version of modelName
+     *
+     * @property modelNameLookup
+     * @type {String}
+     */
+    this.modelNameLookup = inflect.singularize(this.modelName).toLowerCase();
+
+    /**
+     * An object mapping of status codes and their corresponding value
+     *
+     * @property STATUS_CODES
+     * @type {Object}
+     */
+    this.STATUS_CODES = STATUS_CODES;
+
+    /**
+     * Instance of {{#crossLink &quot;Store&quot;}}Store{{/crossLink}}
+     *
+     * @property store
+     * @type {Object}
+     */
+    registry.inject(this, &quot;service:store&quot;, &quot;store&quot;);
+
+    try {
+      /**
+       * The model class that belongs to this controller. If none could be found
+       * this will be undefined.
+       *
+       * @property internalModel
+       * @type {Object}
+       */
+      registry.inject(this, &#x60;model:${this.modelNameLookup}&#x60;, &quot;internalModel&quot;);
+    } catch (err) {
+      registry.lookup(&quot;service:logger&quot;).debug({
+        error: err,
+        controller: this.name
+      }, &quot;failed to load model&quot;);
+    }
+  }
+
+  /**
+   * Returns the name of the model that is associated with this controller.
+   * If options.model is passed to controller it will take precedence, otherwise
+   * the controller will attempt to lookup a model matching the controller&#x27;s name
+   *
+   * @method getModelName
+   * @param {String} model name of the model to use
+   * @returns {String} modelName
+   */
+  getModelName(model) {
+    const isChild = this.isChild;
+    let modelName;
+
+    if (isChild) {
+      const parent = this.__parent;
+
+      modelName = model || inflect.camelize(parent);
+    } else {
+      modelName = model || this.name;
+    }
+
+    return modelName;
+  }
+}
+
+export default Controller;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

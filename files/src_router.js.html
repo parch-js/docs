@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/router.js - Parch</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Parch
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>2.1.2</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Application", "classes/containment", "classes/Controller", "classes/JSONSerializer", "classes/Loader", "classes/Model", "classes/ModelManager", "classes/Registry", "classes/RestSerializer", "classes/Route", "classes/Router", "classes/RouteSegment", "classes/Store", "modules/parch"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+<div>
+    <div id="sidebar">
+    <div id="classes">
+        <ul id="api-classes" class="nav nav-list">
+                <li><a href="../classes/Application.html">Application</a></li>
+                <li><a href="../classes/containment.html">containment</a></li>
+                <li><a href="../classes/Controller.html">Controller</a></li>
+                <li><a href="../classes/JSONSerializer.html">JSONSerializer</a></li>
+                <li><a href="../classes/Loader.html">Loader</a></li>
+                <li><a href="../classes/Model.html">Model</a></li>
+                <li><a href="../classes/ModelManager.html">ModelManager</a></li>
+                <li><a href="../classes/Registry.html">Registry</a></li>
+                <li><a href="../classes/RestSerializer.html">RestSerializer</a></li>
+                <li><a href="../classes/Route.html">Route</a></li>
+                <li><a href="../classes/Router.html">Router</a></li>
+                <li><a href="../classes/RouteSegment.html">RouteSegment</a></li>
+                <li><a href="../classes/Store.html">Store</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+        </div>
+        <div class="span9">
+    <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>src/router.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+&quot;use strict&quot;;
+
+import inflect from &quot;inflect&quot;;
+
+import { JSONSerializer } from &quot;./serializers&quot;;
+import Route from &quot;./route&quot;;
+import { getOwner, setOwner } from &quot;./containment&quot;;
+
+const METHODS = {
+  DELETE: &quot;delete&quot;
+};
+const restActionMapper = new Map([
+  [&quot;index&quot;, &quot;get&quot;],
+  [&quot;show&quot;, &quot;get&quot;],
+  [&quot;create&quot;, &quot;post&quot;],
+  [&quot;update&quot;, &quot;put&quot;],
+  [&quot;destroy&quot;, &quot;del&quot;]
+]);
+const restPathMapper = new Map([
+  [&quot;index&quot;, &quot;/&quot;],
+  [&quot;show&quot;, &quot;/:id&quot;],
+  [&quot;create&quot;, &quot;/&quot;],
+  [&quot;update&quot;, &quot;/:id&quot;],
+  [&quot;destroy&quot;, &quot;/:id&quot;]
+]);
+
+/**
+ * Manages routing
+ *
+ * @class Router
+ * @constructor
+ * @param {Object} registry {{#crossLink &quot;Registry&quot;}}module registry{{/crossLink}}
+ */
+class Router {
+  constructor(registry) {
+    setOwner(this, registry);
+
+    const config = registry.lookup(&quot;config:main&quot;);
+
+    /**
+     * Contains the model and controller {{#crossLink &quot;Loader&quot;}}loaders{{/crossLink}}
+     *
+     * @property loader
+     * @type {Object}
+     */
+    this.loader = {
+      controllers: registry.lookup(&quot;loader:controller&quot;),
+      models: registry.lookup(&quot;service:model-manager&quot;).models
+    };
+
+    /**
+     * An optional namespace to place before all routes (e.g. /v1)
+     *
+     * @property namespacePrefix
+     * @type {String}
+     */
+    this.namespacePrefix = config.namespace || &quot;&quot;;
+    this._loadControllers();
+  }
+
+  /**
+   * Bind a set of routes to a namespace.
+   * Uses {{#crossLink &quot;Router/_buildRoute:method&quot;}}_buildRoute{{/crossLink}} to
+   * normalize the path
+   *
+   * @method namespace
+   * @param {String} namespace the namespace to bind to, with or without leading slash
+   * @param {Object[]} routes array of routes to bind to the namespace
+   * @since 0.9.0
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * Router.map(function () {
+   *   this.namespace(&quot;/users/:userId&quot;, [
+   *     { path: &quot;/setProfileImage&quot;, using: &quot;user:setImage&quot;, method: &quot;post&quot; }
+   *   ])
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  namespace(namespace, routes) {
+    for (const route of routes) {
+      const fullPath = this._buildRoute(
+        this.namespacePrefix,
+        namespace,
+        route.path
+      );
+
+      this.route(fullPath, {
+        using: route.using,
+        method: route.method
+      });
+    }
+  }
+
+  /**
+   * Register a resource and wire up restful endpoints.
+   * Uses {{#crossLink &quot;Router/_buildRoute:method&quot;}}_buildRoute{{/crossLink}} to
+   * normalize the path and builds your 5 basic CRUD endpoints
+   *
+   * @method resource
+   * @param {String} name the resource name in singular form
+   * @param {Object} options resource mapping options
+   * @param {String} options.namespace mount the resource endpoint under a namespace
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * Router.map(function () {
+   *   this.resource(&quot;user&quot;);
+   *
+   *   // Optionally prefix this resource with a namespace
+   *   this.resource(&quot;user&quot;, { namespace: &quot;api&quot; })
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  resource(name, options = {}) {
+    name = inflect.singularize(name);
+    const registry = getOwner(this);
+    let controller;
+
+    try {
+      controller = registry.lookup(&#x60;controller:${name}&#x60;);
+    } catch (err) {
+      controller = {};
+
+      for (const [action] of restActionMapper) {
+        controller[action] = registry.lookup(&#x60;controller:${name}.${action}&#x60;);
+        controller.__children = true;
+      }
+    }
+
+    for (const [action] of restActionMapper) {
+      let controllerInstance = controller;
+      let method = action;
+
+      if (controller.__children) {
+        controllerInstance = controller[action];
+        method = &quot;model&quot;;
+        options.action = action;
+      }
+
+      this._mapControllerAction(name, controllerInstance, method, options);
+    }
+  }
+
+  /**
+   * Register a single route.
+   * Uses {{#crossLink &quot;Router/_buildRoute:method&quot;}}_buildRoute{{/crossLink}} to
+   * normalize the path
+   *
+   * @method route
+   * @param {String} path the route path (e.g. /foo/bar)
+   * @param {Object} options
+   * @param {String} options.using colon delimited controller method identifier
+   * @param {String} options.method http method
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * Router.map(function () {
+   *   this.route(&quot;/user/foo&quot;, { using: &quot;users:foo&quot;, method: &quot;get&quot; });
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  route(path, options) {
+    const app = getOwner(this).lookup(&quot;service:server&quot;);
+    const [controllerName, actionName] = options.using.split(&quot;:&quot;);
+    let action, controller;
+
+    try {
+      action = actionName;
+      controller = getOwner(this).lookup(&#x60;controller:${controllerName}&#x60;);
+    } catch (err) {
+      controller = getOwner(this).lookup(&#x60;controller:${controllerName}.${actionName}&#x60;);
+      action = &quot;model&quot;;
+    }
+
+    let method = options.method;
+    const handlers = this._generateControllerHandlers(controller, action);
+
+    if (method === METHODS.DELETE) { method = &quot;del&quot;; }
+
+    app[method](path, handlers);
+  }
+
+  /**
+   * Consistently builds a route from a set of path segments using
+   * {{#crossLink &quot;Route&quot;}}Route{{/crossLink}}
+   *
+   * @method _buildRoute
+   * @private
+   * @return {Object} route object with path property
+   */
+  _buildRoute() {
+    return new Route(...arguments);
+  }
+
+  /**
+   * generates main route handler plus pre and post hooks
+   *
+   * @private
+   * @method _generateControllerHandlers
+   * @param {Object} controller
+   * @param {String} action controller method
+   *
+   * @return {Array} handlers
+   */
+  _generateControllerHandlers(controller, action) {
+    const controllerAction = controller[action];
+    const { hooks } = controller;
+    const handlers = [controllerAction.bind(controller)];
+
+    if (hooks) {
+      this._registerLegacyControllerHooks(controller, action, hooks, handlers);
+    } else if (controller.beforeModel || controller.afterModel) {
+      this._registerControllerHooks(controller, handlers);
+    }
+
+    return handlers;
+  }
+
+  /**
+   * Generates a path segment from a given resource name
+   *
+   * @private
+   * @method _getPathSegment
+   * @param resource
+   * @param action
+   *
+   * @returns {String} pathSegment (e.g. &#x60;:userId&#x60;)
+   */
+  _getPathSegment(resource, action) {
+    const restPathSegment = restPathMapper.get(action);
+    const resourceSegmentString = &#x60;${resource}Id&#x60;;
+
+    return inflect.camelize(
+      restPathSegment.replace(&quot;id&quot;, resourceSegmentString)
+    );
+  }
+
+  /**
+   * loads controllers from the loader
+   *
+   * @private
+   * @method _loadControllers
+   */
+  _loadControllers() {
+    const controllerLoader = getOwner(this).lookup(&quot;loader:controller&quot;);
+    const modelLoader = getOwner(this).lookup(&quot;loader:model&quot;);
+    const { modules: controllers } = controllerLoader;
+    const { modules: models } = modelLoader;
+    const registry = getOwner(this);
+
+    Object.keys(controllers).forEach(controller =&gt; {
+      const Klass = controllers[controller];
+
+      if (Object.keys(Klass).length) {
+        /* eslint-disable arrow-body-style */
+        const Klasses = Object.keys(Klass).map(action =&gt; ({
+          Klass: Klass[action],
+          name: action
+        }));
+        /* eslint-enable arrow-body-style */
+
+        Klasses.forEach(subClass =&gt; {
+          const instance = new subClass.Klass(getOwner(this), {
+            parent: controller
+          });
+
+          registry.register(&#x60;controller:${controller}.${subClass.name}&#x60;, instance);
+        });
+      } else {
+        const instance = new Klass(getOwner(this));
+        const instanceName = inflect.singularize(instance.name);
+
+        registry.register(&#x60;controller:${instanceName}&#x60;, instance);
+      }
+    });
+
+    Object.keys(models).forEach(model =&gt; {
+      const instanceName = inflect.singularize(model);
+      const serializer = this._lookupSerializer(instanceName);
+
+      registry.register(&#x60;serializer:${instanceName}&#x60;, serializer);
+    });
+  }
+
+  /**
+   * Attempts to lookup a serializer by &#x27;name&#x27; in the module loader. If one exists
+   * it is instantiated and registered by &#x27;name&#x27;. If one does not exist the
+   * default JSONSerializer is instantiated and registered.
+   *
+   * @method _lookupSerializer
+   * @private
+   * @param {String} name lowercase singular lookup name (e.g. &quot;user&quot;)
+   * @return {Object} serializer instance
+   */
+  _lookupSerializer(name) {
+    const serializerLoader = getOwner(this).lookup(&quot;loader:serializer&quot;);
+
+    if (!serializerLoader) {
+      return new JSONSerializer();
+    }
+
+    const { modules: serializers } = serializerLoader;
+    const Serializer = serializers[name];
+    let serializer;
+
+    if (Serializer) {
+      serializer = new Serializer();
+    } else {
+      serializer = new JSONSerializer();
+    }
+
+    return serializer;
+  }
+
+  /**
+   * maps a resource controller action and route
+   *
+   * @private
+   * @method _mapControllerAction
+   * @param {String} resource the resource name
+   * @param {Object} controller the resource controller
+   * @param {String} action the controller method
+   * @param {Object} options mapping options
+   */
+  _mapControllerAction(resource, controller, action, options) {
+    const actionForPath = action === &quot;model&quot; ? options.action : action;
+    const app = getOwner(this).lookup(&quot;service:server&quot;);
+    const handlers = this._generateControllerHandlers(controller, action);
+    const method = restActionMapper.get(actionForPath);
+    const namespace = options.namespace || &quot;&quot;;
+    const singularResource = inflect.singularize(resource);
+    const pluralResource = inflect.pluralize(singularResource);
+    const pathSegment = this._getPathSegment(singularResource, actionForPath);
+    const resourcePath = this._buildRoute(
+      this.namespacePrefix,
+      namespace,
+      pluralResource,
+      pathSegment
+    );
+
+    app[method](resourcePath, handlers);
+  }
+
+  /**
+   * Registers controller beforeModel and afterModel hooks
+   *
+   * @method _registerControllerHooks
+   * @private
+   * @param {Object} controller {{#crossLink &quot;Controller&quot;}}controller{{/crossLink}}
+   * @param {Array} handlers restify request handlers
+   */
+  _registerControllerHooks(controller, handlers) {
+    if (controller.beforeModel) {
+      handlers.unshift(controller.beforeModel.bind(controller));
+    }
+
+    if (controller.afterModel) {
+      handlers.push(controller.afterModel.bind(controller));
+    }
+  }
+
+  /**
+   * Registers legacy controller before/after hooks
+   *
+   * @method _registerLegacyControllerHooks
+   * @private
+   * @param {Object} controller {{#crossLink &quot;Controller&quot;}}controller{{/crossLink}}
+   * @param {String} action controller action type (index, create, update, etc)
+   * @param {Array} handlers restify request handlers
+   */
+  _registerLegacyControllerHooks(controller, action, hooks, handlers) {
+    const actionHooks = hooks[action];
+
+    if (actionHooks &amp;&amp; actionHooks.before) {
+      handlers.unshift(actionHooks.before.bind(controller));
+    }
+
+    if (actionHooks &amp;&amp; actionHooks.after) {
+      handlers.push(actionHooks.after.bind(controller));
+    }
+  }
+
+  /**
+   * configures router resources
+   *
+   * @static
+   * @param {Object} settings
+   * @param {Function} callback called with the router instance
+   * @return {undefined}
+   */
+  static map(registry, callback) {
+    const router = new Router(registry);
+
+    callback.call(router);
+    return router;
+  }
+}
+
+export default Router;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>
